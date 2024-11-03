@@ -6,7 +6,8 @@
 
 You can Build and Run through CodeBlocks or run it locally via the Terminal
 ```
-$ gcc -o hello Hello/main.c 
+$ cd Hello/
+$ gcc -o hello main.c 
 $ ./hello 
 Hello world!
 ```
