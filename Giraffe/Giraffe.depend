@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1730626579 source:/home/robq/repos/c/Giraffe/main.c
+	<stdio.h>
+	<stdlib.h>
+
