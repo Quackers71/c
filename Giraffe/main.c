@@ -1,9 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 int main()
 {
+    // User Input
+
+    int age;
+    printf("Please enter your age : ");
+    scanf("%d", &age);
+
+    printf("You are %d years old\n", age);
+    int currentYear = 2024;
+    int yearOfBirth = currentYear - age;
+    printf("And you were born in %d\n", yearOfBirth);
+
+    double gpa;
+    printf("Please enter your gpa : ");
+    scanf("%lf", &gpa);
+
+    printf("Your gpa is %.2f\n", gpa);
+
+    char grade;
+    printf("Please enter your grade : ");
+    scanf(" %c", &grade);
+
+    printf("Your grade is %c\n", grade);
+
+    // NOT THE BEST METHOD :-(
+    char forename[25], surname[25];
+    printf("Please enter your name : ");
+    scanf("%24s %24s", forename, surname);
+
+    // fflush(stdin);
+    // fgets( name, sizeof name, stdin);
+    // name[strcspn(name, "\n")] = '\0';
+
+    printf("Your name is %s %s\n", forename, surname);
+
+    return 0;
+
+/*
     // Constants
 
     const int NUM = 5;
@@ -11,8 +49,7 @@ int main()
     // num = 8;
     // printf("%d\n", num);
 
-    return 0;
-/* 
+ 
     // printf stuff
 
     char charName[] = "Russ";
@@ -49,9 +86,9 @@ int main()
     printf("%f\n", desi);
     printf("%.2f * %.2f = %.2f\n", a, b, result);
 
-    /* double num;
-    num = 36.356;
-    double ceilResult = ceil(num); 
+    // double num;
+    // num = 36.356;
+    // double ceilResult = ceil(num); 
 
     printf("2^3 = %.2f\n", pow(2, 3)); // 2^3
     printf("4^3 = %.2f\n", pow(4, 3) ); // 4^3
