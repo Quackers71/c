@@ -11,5 +11,11 @@ int main()
     printf("He really like the name %s\n", charName);
     printf("but did't like being %d.\n", charAge);
 
+    // Data Types
+    int age = 40;
+    double gpa = 3.6;
+    char grade = 'A';
+    char phrase[] = "Hello World!";
+
     return 0;
 }
