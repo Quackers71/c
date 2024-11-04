@@ -5,7 +5,23 @@
 
 int main()
 {
-    // User Input
+
+    // Basic Calculator
+
+    double num1;
+    double num2;
+
+    printf("Please enter your first number :");
+    scanf("%lf", &num1);
+    printf("Please enter your second number :");
+    scanf("%lf", &num2);
+
+    printf("%.2f + %.2f = %.2f\n",num1, num2, num1 + num2);
+
+    return 0;
+
+
+/*    // User Input
 
     int age;
     printf("Please enter your age : ");
@@ -39,9 +55,9 @@ int main()
 
     printf("Your name is %s %s\n", forename, surname);
 
-    return 0;
 
-/*
+
+
     // Constants
 
     const int NUM = 5;
