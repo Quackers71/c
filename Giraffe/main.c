@@ -5,6 +5,30 @@
 
 int main()
 {
+
+    // Arrays
+
+    int luckyNumbers[] = {4, 8, 15, 16, 23, 42};
+    int size = sizeof(luckyNumbers)/sizeof(luckyNumbers[0]);
+    for (int i = 0; i < size; i++) {
+      printf("%d\n", luckyNumbers[i]);
+    }
+    printf("The first number is %d\n", luckyNumbers[0]);
+
+    luckyNumbers[0] = 200;
+    printf("The first number is now %d\n", luckyNumbers[0]);
+
+    int unLuckyNumbers[10];
+    unLuckyNumbers[1] = 80;
+    printf("The first unlucky number is %d\n", unLuckyNumbers[1]);
+
+    char phrase[20] = "Arrays Yo!";
+    printf("%s\n", phrase);
+
+    return 0;
+
+
+/*
     // Mad Libs
 
     char color[20];
@@ -22,8 +46,6 @@ int main()
     printf("%s are blue\n", pluralNoun);
     printf("I love %s\n",celebrity);
 
-    return 0;
-/*
 
     // Basic Calculator
 
@@ -38,8 +60,6 @@ int main()
     printf("%.2f + %.2f = %.2f\n",num1, num2, num1 + num2);
 
     
-
-
    // User Input
 
     int age;
@@ -75,8 +95,6 @@ int main()
     printf("Your name is %s %s\n", forename, surname);
 
 
-
-
     // Constants
 
     const int NUM = 5;
@@ -98,6 +116,7 @@ int main()
     printf("He really like the name %s\n", charName);
     printf("but did't like being %d.\n", charAge);
 
+
     // Data Types
     int age = 40;
     double gpa = 3.6;
@@ -115,6 +134,7 @@ int main()
     printf("My favourite %s is %d\n", wordy, myNum);
     printf("gpa = %f\n", gpa);
     printf("My fave char is %c\n", q);
+
 
     // Working with Numbers
 
