@@ -4,7 +4,7 @@
 
 - C Programming Tutorial for Beginners - fCC.org > https://youtu.be/KJgsSFOSQv0?si=jnfBZihhXw-rxVoz
 
-Up to : 1:17:43
+Up to : 1:45:36
 
 You can Build and Run through CodeBlocks or run it locally via the Terminal
 ```

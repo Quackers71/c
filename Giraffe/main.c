@@ -3,9 +3,33 @@
 #include <math.h>
 #include <string.h>
 
+void sayHi() {
+    printf("Hello User\n");
+}
+
+void sayHiName(char name[], int age) {
+    int currentYear = 2024;
+    int yob = currentYear - age;
+    printf("Hi %s, you were born in %d\n", name, yob);
+}
+
 int main()
 {
+    // Functions
 
+    printf("Top\n");
+    sayHi();
+    printf("Bottom\n\n");
+    sayHiName("Bob", 53);
+    sayHiName("Tom", 32);
+    sayHiName("Val", 70);
+    sayHiName("Reg", 8);
+
+    return 0;
+}
+
+
+/*
     // Arrays
 
     int luckyNumbers[] = {4, 8, 15, 16, 23, 42};
@@ -25,10 +49,7 @@ int main()
     char phrase[20] = "Arrays Yo!";
     printf("%s\n", phrase);
 
-    return 0;
 
-
-/*
     // Mad Libs
 
     char color[20];
@@ -152,5 +173,4 @@ int main()
 
     printf("ceiling of 36.356 is %.2f\n", ceil(36.356));
     printf("floor of 36.356 is %.2f\n", floor(36.356) );
-    */
-}
+*/
