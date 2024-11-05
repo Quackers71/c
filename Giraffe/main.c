@@ -5,6 +5,14 @@
 
 int main()
 {
+    // Mad Libs
+
+    printf("Roses are red\n");
+    printf("Violets are blue\n");
+    printf("I love you\n");
+
+    return 0;
+/*
 
     // Basic Calculator
 
@@ -18,10 +26,10 @@ int main()
 
     printf("%.2f + %.2f = %.2f\n",num1, num2, num1 + num2);
 
-    return 0;
+    
 
 
-/*    // User Input
+   // User Input
 
     int age;
     printf("Please enter your age : ");
