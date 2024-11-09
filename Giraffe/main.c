@@ -3,6 +3,39 @@
 #include <math.h>
 #include <string.h>
 
+int main() {
+
+    // Better Calculator
+
+    double num1;
+    double num2;
+    char op;
+
+    printf("Please enter a number : ");
+    scanf("%lf", &num1);
+    printf("Please enter an operator : ");
+    scanf(" %c", &op);
+    printf("Please enter a number : ");
+    scanf("%lf", &num2);
+
+    if(op == '+') {
+        printf("%.2f + %.2f = %.2f\n",num1, num2, num1 + num2);
+    } else if(op == '-') {
+        printf("%.2f - %.2f = %.2f\n",num1, num2, num1 - num2);
+    } else if(op == '/') {
+        printf("%.2f / %.2f = %.2f\n",num1, num2, num1 / num2);
+    } else if(op == '*') {
+        printf("%.2f * %.2f = %.2f\n",num1, num2, num1 * num2);
+    } else {
+        printf("Invalid operator!\n");
+    }
+
+    return 0;
+}
+
+
+/*
+
 int max(int num1, int num2, int num3) {
     int result;
     if(num1 >= num2 && num1 >= num3){
@@ -31,8 +64,6 @@ int main() {
     return 0;
 }
 
-
-/*
 
 double cube(double num) {
     double result = num * num * num;
