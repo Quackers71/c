@@ -3,6 +3,22 @@
 #include <math.h>
 #include <string.h>
 
+double cube(double num) {
+    double result = num * num * num;
+    return result;
+    // return num * num * num; would do the same thing!
+    printf("Print this..."); // The return result; will break out of the function
+}
+
+int main() {
+
+    // Return Statements
+
+    printf("Answer : %.2f\n", cube(7.0));
+
+    return 0;
+}
+/*
 void sayHi() {
     printf("Hello User\n");
 }
@@ -29,7 +45,6 @@ int main()
 }
 
 
-/*
     // Arrays
 
     int luckyNumbers[] = {4, 8, 15, 16, 23, 42};

@@ -13,3 +13,8 @@ $ gcc -o hello main.c
 $ ./hello 
 Hello world!
 ```
+
+Cubing a number -  number to the power of 3, i.e.
+```
+    2^3 -> 2 * 2 * 2
+```
