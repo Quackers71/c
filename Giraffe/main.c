@@ -3,6 +3,37 @@
 #include <math.h>
 #include <string.h>
 
+int max(int num1, int num2, int num3) {
+    int result;
+    if(num1 >= num2 && num1 >= num3){
+        result = num1;
+    } else if(num2 >= num1 && num2 >= num3) {
+        result = num2;
+    } else {
+        result = num3;
+    }
+    return result;
+
+}
+
+int main() {
+
+    // If Statements
+
+    printf("%d\n", max(80, 30, 70));
+
+    if (!(3 < 2 || 2 > 5)) {
+        printf("True\n");
+    } else {
+        printf("False\n");
+    }
+
+    return 0;
+}
+
+
+/*
+
 double cube(double num) {
     double result = num * num * num;
     return result;
@@ -18,7 +49,9 @@ int main() {
 
     return 0;
 }
-/*
+
+
+
 void sayHi() {
     printf("Hello User\n");
 }
