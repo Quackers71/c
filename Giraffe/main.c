@@ -3,6 +3,41 @@
 #include <math.h>
 #include <string.h>
 
+int main(){
+
+    // Switch Statements
+
+    char grade = 'A';
+
+    switch (grade)
+    {
+    case 'A' :
+        printf("You did great!\n");
+        break;
+    case 'B' :
+        printf("You did alright!\n");
+        break;
+    case 'C' :
+        printf("You did poorly!\n");
+        break;
+    case 'D' :
+        printf("You did very bad!\n");
+        break;
+    case 'F' :
+        printf("You Failed!\n");
+        break;
+    
+    default:
+        printf("Invalid Grade...")
+;        break;
+    }
+
+    return 0;
+}
+
+
+/*
+
 int main() {
 
     // Better Calculator
@@ -33,8 +68,6 @@ int main() {
     return 0;
 }
 
-
-/*
 
 int max(int num1, int num2, int num3) {
     int result;
