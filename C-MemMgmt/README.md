@@ -1,20 +1,15 @@
-# C Programming
+# C Programming and Memory Management
 
-### Learning C (pre Rust prerequisites)
+### Boot dev YT
 
-- C Programming Tutorial for Beginners - fCC.org > https://youtu.be/KJgsSFOSQv0?si=jnfBZihhXw-rxVoz
+- C Programming and Memory Management - Full Course > https://youtu.be/rJrd2QMVbGM?si=u7LJLZFwFxis4k0z
 
-Up to : 1:45:36
+Up to : TBC
 
 You can Build and Run through CodeBlocks or run it locally via the Terminal
 ```
 $ cd Hello/
 $ gcc -o hello main.c 
 $ ./hello 
-Hello world!
-```
-
-Cubing a number -  number to the power of 3, i.e.
-```
-    2^3 -> 2 * 2 * 2
+Hello C!
 ```
