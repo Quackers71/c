@@ -13,4 +13,3 @@ $ gcc -o hello main.c
 $ ./hello 
 Hello C!
 ```
-
