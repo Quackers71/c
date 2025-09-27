@@ -39,7 +39,7 @@ Passed: 4, Failed: 0
 4 of 4 (100%) tests successful
 ```
 
-Output with value's changed for some of the tests were set to fail :
+Output with value's changed for some of the unit tests were set to fail :
 ```
 % ./munit                       
 Running suite: get_average
