@@ -2,7 +2,7 @@
 
 For this exercise we didn't have the munit.h file, so I leaned on AI to help create this and worked out the errors from compiling</br>
 
-- https://share.google/aimode/q1ZK5ofS7KQsZrd7D
+- https://share.google/aimode/ALzr7zwrdezPg5lO4
 
 Once the main errors I believed were fixed, when compiling I received a linking error :</br>
 ```
@@ -17,12 +17,10 @@ ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
-To Fix this AI advised to run clang, I opted to use ggc which does the same function
+To Fix this AI advised to run clang and link both .c files, I opted to use ggc which does the same function
 ```
 gcc -o munit main.c exercise.c
 ```
-
-I went through the munit.h and main.c to try and work out how the tests worked! But will re-visit this exercise once I've learnt more C stuff... 
 
 Final Output :
 ```
@@ -65,3 +63,11 @@ Suite finished. Total tests: 4, Failures: 3
 Passed: 1, Failed: 3
 1 of 4 (25%) tests successful
 ```
+
+I went through the munit.h and main.c to try and work out how the tests worked! But will re-visit this exercise once I've learnt more C stuff... 
+
+## Summary of the munit.h file's interaction with main.c
+1. main.c uses munit_case macros to define individual tests, which creates the underlying C functions.
+2. main.c uses the munit_test helper macro to build an array of MunitTest structs, with each entry pointing to the correct test function.
+3. main.c calls munit_suite() to bundle the test array into a MunitSuite.
+4. Finally, main.c calls munit_suite_main() to kick off the testing process, with the munit.h functions handling all the logic for running the tests and reporting the results. 
