@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <math.h>   // For floating-point comparisons
-#include <string.h> // For string-related functions
+#include <string.h> // For string comparison (strcmp)
 #include <stdlib.h> // For exit() and other utilities
 
 /* --- Data Structures --- */
@@ -43,12 +43,21 @@ typedef struct MunitSuite {
 
 #define MUNIT_EPSILON 1e-6
 
-#define munit_assert_string_equal(expected, actual, message) do { \
+#define munit_assert_double_equal(expected, actual, message) do { \
     if (fabs((expected) - (actual)) > MUNIT_EPSILON) { \
         printf("\nAssertion Failed in test '%s': %s\n", __func__, message); \
         printf("  Expected: %f\n", (double)(expected)); \
         printf("  Actual:   %f\n", (double)(actual)); \
         return "Double values are not equal"; \
+    } \
+} while(0)
+
+#define munit_assert_string_equal(expected, actual, message) do { \
+    if (strcmp((const char*)(expected), (const char*)(actual)) != 0) { \
+        printf("\nAssertion Failed in test '%s': %s\n", __func__, message); \
+        printf("  Expected: \"%s\"\n", (const char*)(expected)); \
+        printf("  Actual:   \"%s\"\n", (const char*)(actual)); \
+        return "String values are not equal"; \
     } \
 } while(0)
 
@@ -88,7 +97,6 @@ static int run_suite(MunitSuite* suite) {
 
     printf("Suite finished. Total tests: %d, Failures: %d\n\n", total_tests, failures);
 
-    // Add the final summary line with the success rate.
     if (total_tests > 0) {
         float success_rate = ((float)(total_tests - failures) / total_tests) * 100.0f;
         printf("--- Test Summary ---\n");
