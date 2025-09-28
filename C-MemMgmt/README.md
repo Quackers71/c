@@ -13,3 +13,6 @@ $ gcc -o hello main.c
 $ ./hello 
 Hello C!
 ```
+
+- Basic C Types & Sizes (This is not the same on every computer in C)</br></br>
+<img src="./images/Basic_C_Types&Sizes.png" width="300"/><br/>
