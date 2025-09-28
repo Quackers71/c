@@ -20,4 +20,4 @@ Cubing a number -  number to the power of 3, i.e.
 ```
 
 - Basic C Types & Sizes (This is not the same on every computer in C)</br></br>
-<img src="./C-MemMgmt/images/Basic_C_Types&Sizes.png" width="300"/><br/>
+<img src="./C-MemMgmt/images/Basic_C_Types&Sizes.png" width="500"/><br/>

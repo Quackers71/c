@@ -4,7 +4,7 @@
 
 - C Programming and Memory Management - Full Course > https://youtu.be/rJrd2QMVbGM?si=u7LJLZFwFxis4k0z
 
-Up to : 35:21 / 4:43:47
+Up to : 47:47 / 4:43:47
 
 You can Build and Run through CodeBlocks or run it locally via the Terminal
 ```
@@ -15,4 +15,4 @@ Hello C!
 ```
 
 - Basic C Types & Sizes (This is not the same on every computer in C)</br></br>
-<img src="./images/Basic_C_Types&Sizes.png" width="300"/><br/>
+<img src="./images/Basic_C_Types&Sizes.png" width="500"/><br/>
