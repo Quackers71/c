@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "exercise.h"
+#include "exercise.c"
 
 void test(int start, int end) {
     printf("Printing from %d to %d:\n", start, end);
@@ -8,5 +9,5 @@ void test(int start, int end) {
 }
 
 int main() {
-    test(5, 1);
+    test(10, 1);
 }
