@@ -5,30 +5,30 @@
                       // Source files should be compiled seperately and linked together.
 
 munit_case(RUN, test_new_coordinate1, {
-    struct Coordinate c = new_coord(1, 2, 3);
+    coordinate_t c = new_coord(1, 2, 3);
     assert_int(c.x, ==, 1, "should set x");
     assert_int(c.y, ==, 2, "should set y");
     assert_int(c.z, ==, 3, "should set z");
 });
 
 munit_case(RUN, test_new_coordinate2, {
-    struct Coordinate c = new_coord(4, 2, 0);
+    coordinate_t c = new_coord(4, 2, 0);
     assert_int(c.x, ==, 4, "should set x");
     assert_int(c.y, ==, 2, "should set y");
     assert_int(c.z, ==, 0, "should set z");
 });
 
 munit_case(RUN, test_scaled_coordinate1, {
-    struct Coordinate c = new_coord(10, 20, 30);
-    struct Coordinate scaled = scale_coordinate(c, 2);
+    coordinate_t c = new_coord(10, 20, 30);
+    coordinate_t scaled = scale_coordinate(c, 2);
     assert_int(scaled.x, ==, 20, "should scale x");
     assert_int(scaled.y, ==, 40, "should scale y");
     assert_int(scaled.z, ==, 60, "should scale z");
 });
 
 munit_case(RUN, test_scaled_coordinate2, {
-    struct Coordinate c = new_coord(40, 20 , 10);
-    struct Coordinate scaled = scale_coordinate(c, 5);
+    coordinate_t c = new_coord(40, 20 , 10);
+    coordinate_t scaled = scale_coordinate(c, 5);
     assert_int(scaled.x, ==, 200, "should scale x");
     assert_int(scaled.y, ==, 100, "should scale y");
     assert_int(scaled.z, ==, 50, "should scale z");

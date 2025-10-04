@@ -8,14 +8,14 @@
 #ifndef COORD_H
 #define COORD_H
 
-struct Coordinate {
+typedef struct Coordinate {
     int x;
     int y;
     int z;
-};
+} coordinate_t;
 
 // Declare the prototype for the new_coord function
-struct Coordinate new_coord(int x, int y, int z);
-struct Coordinate scale_coordinate(struct Coordinate c, int scale);
+coordinate_t new_coord(int x, int y, int z);
+coordinate_t scale_coordinate(coordinate_t c, int scale);
 
 #endif // COORD_H
