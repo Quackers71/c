@@ -8,10 +8,15 @@ Up to : 1:02:21 / 4:43:47
 
 You can Build and Run through CodeBlocks or run it locally via the Terminal
 ```
-$ cd Hello/
-$ gcc -o hello main.c 
-$ ./hello 
+% cd Hello/
+% gcc -o hello main.c 
+% ./hello 
 Hello C!
+```
+
+If you have multiple files you can use #include "*.h" files, but compile & link the .c files i.e.
+```
+% gcc -o scaledcoord main.c coord.c
 ```
 
 Basic C Types & Sizes (This is not the same on every computer in C)</br>

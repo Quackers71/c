@@ -1,6 +1,8 @@
+#include <stdio.h>
 #include "munit.h"
 #include "coord.h"
-#include "coord.c"
+// #include "coord.c" // was advised this was generally considered bad practice!
+                      // Source files should be compiled seperately and linked together.
 
 munit_case(RUN, test_new_coordinate1, {
     struct Coordinate c = new_coord(1, 2, 3);
@@ -16,26 +18,28 @@ munit_case(RUN, test_new_coordinate2, {
     assert_int(c.z, ==, 0, "should set z");
 });
 
-munit_case(RUN, test_new_coordinate3, {
+munit_case(RUN, test_scaled_coordinate1, {
     struct Coordinate c = new_coord(10, 20, 30);
-    assert_int(c.x, ==, 10, "should set x");
-    assert_int(c.y, ==, 20, "should set y");
-    assert_int(c.z, ==, 30, "should set z");
+    struct Coordinate scaled = scale_coordinate(c, 2);
+    assert_int(scaled.x, ==, 20, "should scale x");
+    assert_int(scaled.y, ==, 40, "should scale y");
+    assert_int(scaled.z, ==, 60, "should scale z");
 });
 
-munit_case(RUN, test_new_coordinate4, {
+munit_case(RUN, test_scaled_coordinate2, {
     struct Coordinate c = new_coord(40, 20 , 10);
-    assert_int(c.x, ==, 40, "should set x");
-    assert_int(c.y, ==, 20, "should set y");
-    assert_int(c.z, ==, 10, "should set z");
+    struct Coordinate scaled = scale_coordinate(c, 5);
+    assert_int(scaled.x, ==, 200, "should scale x");
+    assert_int(scaled.y, ==, 100, "should scale y");
+    assert_int(scaled.z, ==, 50, "should scale z");
 });
 
 int main() {
     MunitTest tests[] = {
         munit_test("/test_new_coordinate1", test_new_coordinate1),
         munit_test("/test_new_coordinate2", test_new_coordinate2),
-        munit_test("/test_new_coordinate3", test_new_coordinate3),
-        munit_test("/test_new_coordinate4", test_new_coordinate4),
+        munit_test("/test_scaled_coordinate1", test_scaled_coordinate1),
+        munit_test("/test_scaled_coordinate2", test_new_coordinate2),
         munit_null_test,
     };
 
