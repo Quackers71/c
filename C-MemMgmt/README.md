@@ -6,18 +6,16 @@
 
 Up to : 1:02:21 / 4:43:47
 
-You can Build and Run through CodeBlocks or run it locally via the Terminal
+You can Build and Run through CodeBlocks or run it locally via the Terminal in VSCode
 ```
-% cd Hello/
-% gcc -o hello main.c 
-% ./hello 
-Hello C!
+# e.g.
+% cd structpad
+% gcc -o structpad main.c -std=c99 -Wall -Werror
+./structpad
 ```
 
-If you have multiple files you can use #include "*.h" files, but compile & link the .c files i.e.
-```
-% gcc -o scaledcoord main.c coord.c
-```
+Unity Build - include everything in main.c</br>
+<img src="./../images/unity_build.png" width="450"></br>
 
 Basic C Types & Sizes (This is not the same on every computer in C)</br>
 <img src="./images/Basic_C_Types&Sizes.png" width="400"/><br/>
