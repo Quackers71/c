@@ -1,0 +1,14 @@
+## Output
+
+structpad (original field order)</br>
+```
+% ./structpad 
+Running suite: padding
+
+Assertion Failed in test 'munit_test_func_test_optimal_size': Should be 16 (in online playground)
+  Expected: 24 == 16
+[FAILED] Test: /test_optimal_size, Reason: Assertion failure
+--- Test Summary ---
+Passed: 0, Failed: 1
+0 of 1 (0%) tests successful
+```

@@ -32,3 +32,12 @@ The order you define the fields matters in C<br/>
 
 A struct memory block</br>
 <img src="./images/struct_memory_block.png" width="450"></br>
+
+Coordinate Struct - a 12 byte struct</br>
+<img src="./images/sizeof_int.png" width="450"></br>
+
+Mixed type structs</br>
+<img src="./images/mixed_type_structs.png" width="450"></br>
+
+Struct Padding</br>
+<img src="./images/struct_padding.png" width="450"></br>
