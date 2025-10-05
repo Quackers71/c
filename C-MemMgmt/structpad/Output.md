@@ -1,14 +1,18 @@
-## Output
-
-structpad (original field order)</br>
+## Output 
 ```
-% ./structpad 
-Running suite: padding
-
-Assertion Failed in test 'munit_test_func_test_optimal_size': Should be 16 (in online playground)
-  Expected: 24 == 16
-[FAILED] Test: /test_optimal_size, Reason: Assertion failure
---- Test Summary ---
-Passed: 0, Failed: 1
-0 of 1 (0%) tests successful
+Initializing Sneklang
+Max threads : 4
+Memory per thread : 512
+Max memory : 2048
+====================================
+Initializing Sneklang
+Max threads : 8
+Memory per thread : 1042
+Max memory : 8336
+====================================
+Initializing Sneklang
+Max threads : 16
+Memory per thread : 2048
+Max memory : 32768
+====================================
 ```
