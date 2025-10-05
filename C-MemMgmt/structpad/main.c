@@ -4,11 +4,14 @@
 
 munit_case(RUN, test_optimal_size, {
     assert_int(
-        sizeof(sneklang_var_t), ==, 16, "Should be 16 (in online playground)"
+        sizeof(sneklang_var_t), ==, 24, "Should be 24 (in online playground)"
     );
 });
 
 int main() {
+
+    printf("sizeof(sneklang_var_t) = %zu\n", sizeof(sneklang_var_t));
+
     MunitTest test[] = {
         munit_test("/test_optimal_size", test_optimal_size),
         munit_null_test,

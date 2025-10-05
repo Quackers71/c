@@ -10,4 +10,5 @@ int main() {
     printf("sizeof(float)     = %zu\n", sizeof(float));
     printf("sizeof(double)    = %zu\n", sizeof(double));
     printf("sizeof(size_t)    = %zu\n", sizeof(size_t));
+    printf("sizeof(char*)     = %zu\n", sizeof(char*));
 }
