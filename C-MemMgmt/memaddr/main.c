@@ -26,9 +26,9 @@ munit_case(RUN, size_of_addr_128, {
 
 int main() {
 
-    long long i = 128;
+    /* long long i = 128;
     printf("The variable 'i' holds the value: %lld\n", i);
-    printf("The memory address of 'i' is: %p\n", (void *)&i);
+    printf("The memory address of 'i' is: %p\n", (void *)&i); */
 
     MunitTest tests[] = {
         munit_test("/size_of_addr_16", size_of_addr_16),

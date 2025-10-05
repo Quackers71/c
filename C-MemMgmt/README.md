@@ -46,3 +46,23 @@ Memory in C</br>
 
 Address of an Operator</br>
 <img src="./images/address_of_operator.png" width="450"></br>
+
+An address in memory</br>
+<img src="./images/an_address_in_memory.png" width="450"></br>
+
+Virtual memory</br>
+<img src="./images/virtual_memory.png" width="450"></br>
+<img src="./images/vm_exceptions.png" width="450"></br>
+<img src="./images/virtual_chunk.png" width="450"></br>
+
+Pointers</br>
+<img src="./images/pointers.png" width="450"></br>
+
+Copying the value of the original address</br>
+<img src="./images/copy_value_address.png" width="450"></br>
+
+Memory allocation</br>
+<img src="./images/memory_allocations.png" width="450"></br>
+
+Memory location change</br>
+<img src="./images/memory_location_change.png" width="450"></br>
