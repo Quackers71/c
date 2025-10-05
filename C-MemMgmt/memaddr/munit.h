@@ -7,14 +7,12 @@
 
 /* --- Data Structures --- */
 
-// The structure for a single test case.
 typedef const char* (*MunitTestFunc)(const void* params);
 typedef struct {
     char* name;
     MunitTestFunc test_func;
 } MunitTest;
 
-// The structure for a test suite.
 typedef struct MunitSuite {
     char* name;
     MunitTest* tests;
@@ -23,7 +21,6 @@ typedef struct MunitSuite {
 
 /* --- Macros for defining tests and assertions --- */
 
-// The munit_case macro defines a test function.
 #define munit_case(tag, name, body) \
     static const char* munit_test_func_##name(const void* params) { \
         (void)params; \
@@ -31,18 +28,16 @@ typedef struct MunitSuite {
         return NULL; \
     }
 
-// The munit_test macro creates an entry in the MunitTest array.
 #define munit_test(name_str, test_func_name) \
     (MunitTest){name_str, munit_test_func_##test_func_name}
 
-// The sentinel macro to end the array of tests.
 #define munit_null_test {NULL, NULL}
 
-// assert_int macro
-#define assert_int(a, op, b, message) do { \
+// munit_assert_ulong macro
+#define munit_assert_ulong(a, op, b, message) do { \
     if (!((a) op (b))) { \
         printf("\nAssertion Failed in test '%s': %s\n", __func__, message); \
-        printf("  Expected: %d %s %d\n", (int)(a), #op, (int)(b)); \
+        printf("  Expected: %lu %s %lu\n", (unsigned long)(a), #op, (unsigned long)(b)); \
         return "Assertion failure"; \
     } \
 } while(0)
@@ -50,7 +45,6 @@ typedef struct MunitSuite {
 
 /* --- Function prototypes and implementation --- */
 
-// Create a test suite.
 MunitSuite munit_suite(const char* name, MunitTest* tests) {
     MunitSuite s;
     s.name = (char*)name;
@@ -58,7 +52,6 @@ MunitSuite munit_suite(const char* name, MunitTest* tests) {
     return s;
 }
 
-// Run the tests in a suite.
 static int run_suite(MunitSuite* suite) {
     if (suite == NULL || suite->tests == NULL) {
         printf("No tests found.\n");
@@ -92,7 +85,6 @@ static int run_suite(MunitSuite* suite) {
     return failures;
 }
 
-// The main entry point for the test runner.
 int munit_suite_main(MunitSuite* suite, const void* params, unsigned int flags, void* user_data) {
     (void)params;
     (void)flags;
