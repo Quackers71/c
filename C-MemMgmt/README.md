@@ -39,3 +39,10 @@ Mixed type structs</br>
 
 Struct Padding</br>
 <img src="./images/struct_padding.png" width="450"></br>
+
+Memory in C</br>
+<img src="./images/memory_in_c.png" width="450"></br>
+<img src="./images/memory_diagram.png" width="450"></br>
+
+Address of an Operator</br>
+<img src="./images/address_of_operator.png" width="450"></br>
