@@ -1,5 +1,3 @@
-#include "coordinate.h"
-
 coordinate_t new_coordinate(int x, int y, int z) {
     return (coordinate_t){.x = x, .y = y, .z = z};
 }
