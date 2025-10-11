@@ -5,6 +5,10 @@
 
 munit_case(RUN, test_unchanged, {
     coordinate_t old = new_coordinate(1, 2, 3);
+    printf("orginal value old.x  = %d > %p\n", old.x, &old.x);
+    printf("orginal value old.y  = %d > %p\n", old.y, &old.y);
+    printf("orginal value old.z  = %d > %p\n\n", old.z, &old.z);
+
     munit_assert_int(old.x, ==, 1, "old.x must be 1");
     printf("test unchanged old.x = %d > %p\n", old.x, &old.x);
 
@@ -17,6 +21,7 @@ munit_case(RUN, test_unchanged, {
 munit_case(RUN, test_changed, {
     coordinate_t old = new_coordinate(1, 2, 3);
     munit_assert_int(old.x, ==, 1, "old.x must be 1");
+    printf("test changed   old.x = %d > %p\n", old.x, &old.x);
 
     coordinate_t new = coordinate_update_and_return_x(old, 4);
     munit_assert_int(new.x, ==, 4, "new.x must be 4");
