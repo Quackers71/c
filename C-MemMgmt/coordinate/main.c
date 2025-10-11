@@ -35,9 +35,9 @@ munit_case(RUN, test_changed, {
 
 int main() {
 
-    printf("\ncoordinate_update_x            = %p\n", coordinate_update_x);
-    printf("coordinate_update_and_return_x = %p\n", coordinate_update_and_return_x);
-    printf("new_coordinate                 = %p\n", new_coordinate);
+    printf("\ncoordinate_update_x            > %p\n", coordinate_update_x);
+    printf("coordinate_update_and_return_x > %p\n", coordinate_update_and_return_x);
+    printf("new_coordinate                 > %p\n", new_coordinate);
     printf("\n");
     
     MunitTest tests[] = {

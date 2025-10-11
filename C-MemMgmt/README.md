@@ -66,3 +66,6 @@ Memory allocation</br>
 
 Memory location change</br>
 <img src="./images/memory_location_change.png" width="450"></br>
+
+Dereferencing Pointers</br>
+<img src="./images/dereferencing_pointers.png" width="450"></br>

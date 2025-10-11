@@ -16,9 +16,9 @@ with some printf outputs
 ```
 % ./coordinate 
 
-coordinate_update_x            = 0x1001cc7bc
-coordinate_update_and_return_x = 0x1001cc828
-new_coordinate                 = 0x1001cc728
+coordinate_update_x            > 0x1001cc7bc
+coordinate_update_and_return_x > 0x1001cc828
+new_coordinate                 > 0x1001cc728
 
 Running suite: pointers
 orginal value old.x  = 1 > 0x16fc32be8
