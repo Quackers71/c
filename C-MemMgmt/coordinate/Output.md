@@ -16,17 +16,17 @@ with some printf outputs
 ```
 % ./coordinate 
 
-coordinate_update_x            = 0x1008bc7bc
-coordinate_update_and_return_x = 0x1008bc828
-new_coordinate                 = 0x1008bc728
+coordinate_update_x            = 0x100c947bc
+coordinate_update_and_return_x = 0x100c94828
+new_coordinate                 = 0x100c94728
 
 Running suite: pointers
-test unchanged old.x = 1
-test unchanged old.x = 1
+test unchanged old.x = 1 > 0x16f16abe8
+test unchanged old.x = 1 > 0x16f16abe8
 [SUCCESS] Test: /test_unchanged
 
-test changed   new.x = 4
-test changed   old.x = 1
+test changed   new.x = 4 > 0x16f16abc8
+test changed   old.x = 1 > 0x16f16abd8
 [SUCCESS] Test: /test_changed
 
 --- Test Summary ---
