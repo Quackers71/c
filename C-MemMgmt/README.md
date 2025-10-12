@@ -69,3 +69,7 @@ Memory location change</br>
 
 Dereferencing Pointers</br>
 <img src="./images/dereferencing_pointers.png" width="450"></br>
+
+The arrow operator</br>
+<img src="./images/the_arrow_operator.png" width="450"></br>
+<img src="./images/order_of_operations.png" width="450"></br>
