@@ -61,7 +61,7 @@ static int run_suite(MunitSuite* suite) {
     int failures = 0;
     int total_tests = 0;
 
-    printf("Running suite: %s\n", suite->name);
+    printf("\nRunning suite: %s\n", suite->name);
 
     for (int i = 0; suite->tests[i].name != NULL; ++i) {
         const char* result = suite->tests[i].test_func(NULL);
@@ -75,7 +75,7 @@ static int run_suite(MunitSuite* suite) {
     }
 
     if (total_tests > 0) {
-        printf("--- Test Summary ---\n");
+        printf("\n--- Test Summary ---\n");
         printf("Passed: %d, Failed: %d\n", total_tests - failures, failures);
         printf("%d of %d (%.0f%%) tests successful\n\n", 
             total_tests - failures, total_tests, 

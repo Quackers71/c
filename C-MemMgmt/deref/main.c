@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "munit.h"
 #include "deref.h"
-#include "deref.c"
 
 // A helper function to create a new codefile_t struct
 codefile_t new_codefile(int lines, int filetype) {
@@ -9,11 +8,16 @@ codefile_t new_codefile(int lines, int filetype) {
 }
 
 munit_case(RUN, test_change_filetype1, {
-    codefile_t original = new_codefile(100, 1);
-    codefile_t changed = change_filetype(&original, 2);
+    codefile_t original = new_codefile(100, 1); // original.filetype is 1
+    codefile_t changed = change_filetype(&original, 2); // changed filetype is 2
     
     munit_assert_int(changed.filetype, ==, 2, "Filetype should change");
     munit_assert_int(original.filetype, ==, 1, "Original struct should be unchanged");
+
+    printf("\noriginal.lines    = %d  > %p\n", original.lines, &original.lines);
+    printf("original.filetype = %d    > %p\n", original.filetype, &original.filetype);
+    printf("changed.lines     = %d  > %p\n", changed.lines, &changed.lines);
+    printf("changed.filetype  = %d    > %p\n", changed.filetype, &changed.filetype);
 });
 
 munit_case(RUN, test_change_filetype2, {
@@ -22,6 +26,11 @@ munit_case(RUN, test_change_filetype2, {
 
     munit_assert_int(changed.filetype, ==, 4, "Filetype should change");
     munit_assert_int(original.filetype, ==, 3, "Original struct should be unchanged");
+
+    printf("\noriginal.lines    = %d   > %p\n", original.lines, &original.lines);
+    printf("original.filetype = %d    > %p\n", original.filetype, &original.filetype);
+    printf("changed.lines     = %d   > %p\n", changed.lines, &changed.lines);
+    printf("changed.filetype  = %d    > %p\n", changed.filetype, &changed.filetype);
 });
 
 munit_case(RUN, test_change_filetype3, {
@@ -30,6 +39,11 @@ munit_case(RUN, test_change_filetype3, {
 
     munit_assert_int(changed.filetype, ==, 5, "Filetype should not change if same value");
     munit_assert_int(original.filetype, ==, 5, "Original struct should be unchanged");
+
+    printf("\noriginal.lines    = %d  > %p\n", original.lines, &original.lines);
+    printf("original.filetype = %d    > %p\n", original.filetype, &original.filetype);
+    printf("changed.lines     = %d  > %p\n", changed.lines, &changed.lines);
+    printf("changed.filetype  = %d    > %p\n", changed.filetype, &changed.filetype);
 });
 
 munit_case(RUN, test_change_filetype4, {
@@ -38,6 +52,11 @@ munit_case(RUN, test_change_filetype4, {
 
     munit_assert_int(changed.filetype, ==, 1, "Filetype should change from 0");
     munit_assert_int(original.filetype, ==, 0, "Original struct should be unchanged");
+
+    printf("\noriginal.lines    = %d    > %p\n", original.lines, &original.lines);
+    printf("original.filetype = %d    > %p\n", original.filetype, &original.filetype);
+    printf("changed.lines     = %d    > %p\n", changed.lines, &changed.lines);
+    printf("changed.filetype  = %d    > %p\n", changed.filetype, &changed.filetype);
 });
 
 munit_case(RUN, test_change_filetype5, {
@@ -46,10 +65,17 @@ munit_case(RUN, test_change_filetype5, {
 
     munit_assert_int(changed.filetype, ==, 20, "Filetype should change to 20");
     munit_assert_int(original.filetype, ==, 10, "Original struct should be unchanged");
+
+    printf("\noriginal.lines    = %d > %p\n", original.lines, &original.lines);
+    printf("original.filetype = %d   > %p\n", original.filetype, &original.filetype);
+    printf("changed.lines     = %d > %p\n", changed.lines, &changed.lines);
+    printf("changed.filetype  = %d   > %p\n", changed.filetype, &changed.filetype);
 });
 
 int main() {
+
     MunitTest tests[] = {
+
         munit_test("/test_change_filetype1", test_change_filetype1),
         munit_test("/test_change_filetype2", test_change_filetype2),
         munit_test("/test_change_filetype3", test_change_filetype3),
