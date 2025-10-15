@@ -12,3 +12,16 @@ Running suite: update_file
 Passed: 2, Failed: 0
 2 of 2 (100%) tests successful
 ```
+
+Output from running this on a Fedora Linux Distro
+```
+$ gcc -o array2 main.c array.c -std=c99 -Wall -Werror
+array.c:3:22: error: argument 1 of type ‘int[200]’ with mismatched bound [-Werror=array-parameter=]
+    3 | void update_file(int filedata[200], int new_filetype, int new_num_lines) {
+      |                  ~~~~^~~~~~~~~~~~~
+In file included from array.c:1:
+array.h:6:23: note: previously declared as ‘int *’
+    6 | void update_file(int *filedata, int new_filetype, int new_num_lines);
+      |                  ~~~~~^~~~~~~~
+cc1: all warnings being treated as errors
+```
