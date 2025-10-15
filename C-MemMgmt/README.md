@@ -73,3 +73,9 @@ Dereferencing Pointers</br>
 The arrow operator</br>
 <img src="./images/the_arrow_operator.png" width="450"></br>
 <img src="./images/order_of_operations.png" width="450"></br>
+
+Multibyte Arrays</br>
+<img src="./images/multibyte_arrays.png" width="450"></br>
+<img src="./images/multibyte_arrays_print_2nd_element.png" width="450"></br>
+<img src="./images/memory_layout.png" width="450"></br>
+<img src="./images/accessing_elements_using_pointers.png" width="450"></br>
