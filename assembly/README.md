@@ -4,7 +4,7 @@
 
 - Learn assembly in 10 minutes via Low Level from YT - TBC
 
-You can Build and Run through CodeBlocks or run it locally via the Terminal in VSCode
+You can Build and Run in a Terminal or run it via the Terminal in VSCode
 ```
 # e.g.
 % cd asem
