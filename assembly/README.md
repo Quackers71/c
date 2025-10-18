@@ -23,4 +23,15 @@ Some other commands
 % objdump -d Mintel asem | test
 /Library/Developer/CommandLineTools/usr/bin/objdump: error: 'Mintel': No such file or directory
 # need to work on this and try it out on Linux
+$ objdump -d Mintel asem
+objdump: 'Mintel': No such file
+
+asem:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000401000 <_start>:
+  401000:       48 c7 c7 08 00 00 00    mov    $0x8,%rdi
+  401007:       48 89 fe                mov    %rdi,%rsi
 ```
