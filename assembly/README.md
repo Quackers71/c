@@ -16,3 +16,9 @@ You can Build and Run in a Terminal or run it via the Terminal in VSCode
 Segmentation fault (core dumped)
 ```
 
+Some other commands
+```
+% objdump -d Mintel asem | test
+/Library/Developer/CommandLineTools/usr/bin/objdump: error: 'Mintel': No such file or directory
+# need to work on this and try it out on Linux
+```

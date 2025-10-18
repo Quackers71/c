@@ -1,5 +1,9 @@
 # C Programming
 
+### Learning Assembly along side learning C
+
+- Various video's via Low Level YT Channel and will look at some Tute's by Bootdev or others...
+
 ### Learning C (pre Rust prerequisites)
 
 - C Programming Tutorial for Beginners - fCC.org > https://youtu.be/KJgsSFOSQv0?si=jnfBZihhXw-rxVoz 
