@@ -11,7 +11,7 @@ asem on Linux
 Segmentation fault (core dumped)
 ```
 
-armasem on M4
+armasem on ARM64
 ```
 % as armasem.s -o armasem.o
 % gcc -o armasem armasem.o -nostdlib -static
@@ -20,4 +20,19 @@ Undefined symbols for architecture arm64:
       <initial-undefines>
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 
+```
+
+ran this on ARM64
+```
+% strings asem | less
+
+__bss_start
+_edata
+_end
+.symtab
+.strtab
+.shstrtab
+.note.gnu.property
+.note.gnu.build-id
+.text
 ```

@@ -25,3 +25,29 @@ array.h:6:23: note: previously declared as ‘int *’
       |                  ~~~~~^~~~~~~~
 cc1: all warnings being treated as errors
 ```
+
+From learning some assembly stuff
+```
+% strings array | less
+
+/test_update_file_basic
+/test_update_file_different_values
+update_file
+No tests found.
+Running suite: %s
+[FAILED] Test: %s, Reason: %s
+[SUCCESS] Test: %s
+--- Test Summary ---
+Passed: %d, Failed: %d
+%d of %d (%.0f%%) tests successful
+Assertion Failed in test '%s': %s
+munit_test_func_test_update_file_basic
+Number of lines should be update to 100
+  Expected: %d %s %d
+Assertion failure
+File type should be update to 1
+Last element should be set to 0
+munit_test_func_test_update_file_different_values
+Number of lines should be update to 250
+File type should be update to 3
+```
