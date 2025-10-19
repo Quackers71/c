@@ -4,6 +4,10 @@
 
 int main()
 {
+
+    /* Block comment*/
+    // Line comment
+
     int num = 6;
     printf("%d\n", num);
 
