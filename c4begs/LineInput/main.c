@@ -4,6 +4,6 @@
 int main() {
     char line[100];
     printf("Enter line : ");
-    scanf("%[^\n]100s", line);
+    fgets(line, 1000, stdin);
     printf("Line : %s\n", line);
 }
