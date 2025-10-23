@@ -34,10 +34,27 @@ int main() {
     char operator;
     double num1, num2;
     char op_buffer[BUFFER_SIZE];
+    int valid_operator = 0; // Flag to control the loop
 
-    printf("Please enter your operator (+, -, * or /) : ");
-    fgets(op_buffer, sizeof(op_buffer), stdin);
-    operator = op_buffer[0]; // Read only the 1st character
+    while (!valid_operator) {
+        printf("Please enter your operator (+, -, * or /) : ");
+        if (fgets(op_buffer, sizeof(op_buffer), stdin) == NULL) {
+            printf("Error reading the input.\n");
+            exit(1);
+        }
+
+        // Use sscanf to extract the operator. Expect a single character.
+        if (sscanf(op_buffer, "%c", &operator) == 1) {
+            // Check if the character is one of the valid operators
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/' ) {
+                valid_operator = 1; // Input is valid, exit the loop
+            } else {
+                printf("Error: Invalid operator, please try again.\n");
+            }
+        } else {
+            printf("Error: Invalid input format, please enter a single character.\n");
+        }
+    }
 
     num1 = get_double("Please enter your 1st number : ");
     num2 = get_double("Please enter your 2nd number : ");
