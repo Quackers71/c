@@ -13,6 +13,7 @@ int max(int num1, int num2, int num3) {
     return result;
 }
 
+// https://share.google/aimode/d2LsDrq0DbeH4uYL9 < This explains what I missed when creating this function
 const char *trueOrFalse(int num1, int num2, int num3) {
     int result;
     if (num1 < num2 || num2 > num3) {
