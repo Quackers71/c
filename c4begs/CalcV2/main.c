@@ -39,6 +39,8 @@ int main() {
     char op_buffer[BUFFER_SIZE];
     int valid_operator = 0; // Flag to control the loop
 
+    num1 = get_double("Please enter your 1st number : ");
+
     while (!valid_operator) {
         printf("Please enter your operator (+, -, * or /) : ");
         if (fgets(op_buffer, sizeof(op_buffer), stdin) == NULL) {
@@ -58,8 +60,7 @@ int main() {
             printf("Error: Invalid input format, please enter a single character.\n");
         }
     }
-
-    num1 = get_double("Please enter your 1st number : ");
+    
     num2 = get_double("Please enter your 2nd number : ");
 
     switch (operator) {

@@ -22,3 +22,6 @@ Basic C Types & Sizes (This is not the same on every computer in C)</br>
 
 Input validation using fgets & sscanf with AI Mode explanations</br>
 - https://share.google/aimode/NYmbF5a5hReC5jvVe
+
+Using functions, returning values from a function & ternary operators</br>
+- https://share.google/aimode/sQTNHYbnOqgWXIb0p
