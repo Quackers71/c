@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 // BTW There was a little (bit more than a little) help from our AI Buddies in the Cloud
 // https://share.google/aimode/NYmbF5a5hReC5jvVe
@@ -35,7 +36,7 @@ double get_double(const char* prompt) {
 
 int main() {
     char operator;
-    double num1, num2;
+    double num1, num2, result;
     char op_buffer[BUFFER_SIZE];
     int valid_operator = 0; // Flag to control the loop
 
@@ -65,25 +66,32 @@ int main() {
 
     switch (operator) {
         case '+':
-            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, num1 + num2);
+            result = num1 + num2;
             break;
         case '-':
-            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, num1 - num2);
+            result = num1 - num2;
             break;
         case '*':
-            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, num1 * num2);
+            result = num1 * num2;
             break;
         case '/':
             if (num2 != 0) {
-                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, num1 / num2);
+                // If num2 is not zero (e.g. 25), perform the division.
+                result = num1 / num2;
             } else {
+                // If num2 is zero, print the error.
                 printf("Error: Division by zero is not allowed.\n");
+                return 1; // Exit the program immediately
             }
             break;
         default:
             printf("Error: Invalid operator\n");
             break;
     }
+    
+    // Using %g for all floating-point output automatically handles the formatting
+    // for both whole and fractional numbers.
+    printf("%g %c %g = %g\n", num1, operator, num2, result);
 
     return 0;
 }
