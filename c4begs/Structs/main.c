@@ -14,11 +14,11 @@ struct Student {
 void printStudent(struct Student *s_ptr) {
 
     printf("Student : %d\n", s_ptr->number);
-    printf("-----------\n");
-    printf("%s\n", s_ptr->name);
-    printf("%d\n", s_ptr->age);
-    printf("%f\n", s_ptr->gpa);
-    printf("%s\n", s_ptr->major);
+    printf("-------\n");
+    printf("Name  : %s\n", s_ptr->name);
+    printf("Age   : %d\n", s_ptr->age);
+    printf("GPA   : %g\n", s_ptr->gpa);
+    printf("Major : %s\n", s_ptr->major);
     printf("\n");
 };
 
@@ -39,7 +39,7 @@ int main() {
     strcpy(student2.name, "Pam");
     strcpy(student2.major, "Photography");
     
-    // Pass the addres of the student variable
+    // Pass the address of the student variable
     printStudent(&student1);
     printStudent(&student2);
 
