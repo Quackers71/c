@@ -14,7 +14,7 @@ struct Student {
 void printStudent(struct Student *s_ptr) {
 
     printf("Student : %d\n", s_ptr->number);
-    printf("-------\n");
+    printf("-----------\n");
     printf("Name  : %s\n", s_ptr->name);
     printf("Age   : %d\n", s_ptr->age);
     printf("GPA   : %g\n", s_ptr->gpa);
@@ -29,15 +29,15 @@ int main() {
     student1.number = 1;
     student1.age = 22;
     student1.gpa = 3.2;
-    strcpy(student1.name, "Jim");
-    strcpy(student1.major, "Business");
+    strcpy(student1.name, "Jim"); // You need to use strcpy with an array which char name[50] is...
+    strcpy(student1.major, "Business Analyst");
 
     struct Student student2;
     student2.number = 2;
     student2.age = 18;
     student2.gpa = 4.2;
     strcpy(student2.name, "Pam");
-    strcpy(student2.major, "Photography");
+    strcpy(student2.major, "Financial Adviser");
     
     // Pass the address of the student variable
     printStudent(&student1);

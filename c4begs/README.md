@@ -25,3 +25,6 @@ Input validation using fgets & sscanf with AI Mode explanations</br>
 
 Using functions, returning values from a function & ternary operators</br>
 - https://share.google/aimode/sQTNHYbnOqgWXIb0p
+
+Structs and Function prototypes
+- https://share.google/aimode/ovRkUL7cAqzhtPGOs
