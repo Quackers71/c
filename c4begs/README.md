@@ -8,7 +8,7 @@ You can Build and Run through CodeBlocks or run it locally via the Terminal in V
 ```
 # e.g.
 % cd Hello
-% gcc -o hello main.c -std=c99
+% gcc -o hello main.c -std=c99 -Wall -Werror
 % ./hello
 Hello World!
 
