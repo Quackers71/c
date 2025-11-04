@@ -9,7 +9,7 @@ int str_len(char self[]) {
 
     int i;
     for (i = 0; self[i]; i++);
-    return i - 1; // removes the newline character add by fgets
+    return i - 1; // removes the newline character added by fgets
 }
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 
     int total_string_length;
 
-    // retreives the total length of the string
+    // retrieves the total length of the string
     for (int i = 0; i < str_len(str2rev); i++) {
         total_string_length = i;
     }
