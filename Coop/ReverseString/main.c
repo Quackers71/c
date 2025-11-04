@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Suggested improvements from G-AI mode : https://share.google/aimode/JOItgvRiKhtvVmyYJ
+
 int str_len(char self[]) {
 
     int i;
