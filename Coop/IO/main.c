@@ -3,14 +3,16 @@
 
 int main() {
 
+    // 2nd version
     int c;
-    
-    c = getchar();
+    while((c = getchar()) != EOF) {
+        putchar(c);
+    }
 
-    while (c !=  EOF) {
+    /* while (c !=  EOF) {
         putchar(c);
         c = getchar();
-    }
+    } */
     
     return 0;
 }
