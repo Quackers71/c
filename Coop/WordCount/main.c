@@ -26,5 +26,7 @@ int main() {
 
     printf("%d line(s), %d word(s) %d character(s) including spaces\n", numline, numword, numchar -1);
 
+    // CTRL + D to exit
+
     return 0;
 }
