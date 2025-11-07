@@ -32,5 +32,22 @@ int main() {
     printf("String length : %zu characters\n", length);
     printf("Size in bytes : %zu bytes\n", size_in_bytes);
 
+    char newstring[] = "Working with some Strings!";
+
+    int newlength = strlen(newstring);
+    int string_count = 0;
+    for (int i = 0; i < newlength; i++)
+        if (newstring[i] == 's' || newstring[i] == 'S')
+            string_count++;
+
+    printf("New String : %s\n", newstring);
+    printf("S Count : %d\n", string_count);
+
+    char s1[] = "My String to copy!";
+    char s2[50];
+
+    strcpy(s2, s1);
+    printf("s2 copied from s1 = %s\n", s2);
+
     return 0;
 }
