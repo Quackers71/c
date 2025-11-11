@@ -3,18 +3,12 @@
 
 int main() {
 
-    int b = 42;
-    int *a = &b;
+    int a, b, c;
+    a = b = c = 0;
 
-    printf(" b: %d\n", b);
-    printf("&b: %p\n", &b);
-    printf(" a: %p\n", a);
-
-    *a = 50;
-
-    printf(" b: %d\n", b);
-    printf("&b: %p\n", &b);
-    printf(" a: %p\n", a);
+    printf("Enter 3 numbers : ");
+    scanf("%d %d %d", &a, &b, &c); // Pass by Reference or Pass by Pointer in C
+    printf("Result : %d\n", a + b + c);
     
     return 0;
 }
