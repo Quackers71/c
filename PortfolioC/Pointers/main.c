@@ -1,38 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int *a, int *b);
+// runtime memory allocation
 
 int main() {
 
-    int x, y;
-    x = 5;
-    y = 10;
+    int *a;
+    int length = 0;
 
-    printf("x: %d   y: %d\n", x, y);
-    printf("&x : %p\n&y : %p\n", &x, &y);
-    swap(&x, &y);
+    printf("Enter a length : ");
+    scanf("%d", &length);
 
-    printf("x: %d  y: %d\n", x, y);
-    printf("&x : %p\n&y : %p\n", &x, &y);
+    a = malloc(length * sizeof(int));
 
-    /* int a, b, c;
-    a = b = c = 0;
+    printf("a: %p\n", (void*)a); // cast pointer to void*
 
-    printf("Enter 3 numbers : ");
-    scanf("%d %d %d", &a, &b, &c); // Pass by Reference or Pass by Pointer in C
-    printf("Result : %d\n", a + b + c); */
+    for (int i = 0; i < length; i++)
+        a[i] = i;
+
+    for (int i = 0; i < length; i++)
+        printf("a[%d]=%d\n", i, a[i]);
+
+    size_t total_bytes = length * sizeof(int);   
+    printf("sizeof array : %zu\n", total_bytes); // use %zu with size_t, handles large amounts of memory
+
+    free(a);
     
     return 0;
-}
-
-void swap(int *a, int *b) {
-
-    printf("a  : %p\nb  : %p\n", a, b);
-    printf("*a : %d\n*b : %d\n", *a, *b);
-
-    int temp = 0;
-    temp = *a;
-    *a = *b;
-    *b = temp;
 }
