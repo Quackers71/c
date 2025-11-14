@@ -4,7 +4,7 @@
 // Passing an array to a Function
 
 void add(int *x);
-void array_add(int array[]);
+void array_add(int array[], int size);
 
 int main() {
 
@@ -12,27 +12,35 @@ int main() {
     add(&a);
     printf("a: %d\n", a);
 
-    int myarray[5] = {1,2,3,4,5};
-    for (int i = 0; i <=sizeof(myarray[i]); i++)
+    int myarray[] = {1,2,3,4,5,6,7,8,9,20,31,42,53,64,100};
+    int length = sizeof(myarray) / sizeof(myarray[0]);
+    
+    printf("Original array : ");
+    for (int i = 0; i < length; i++)
         printf("%d ", myarray[i]);
     printf("\n");
 
-    array_add(myarray);
+    array_add(myarray, length); // function call
 
-    for (int i = 0; i <= sizeof(myarray[i]); i++)
+    printf("Modified array : ");
+    for (int i = 0; i < length; i++)
         printf("%d ", myarray[i]);
     printf("\n");
 
-    printf("myarray: %p\n", myarray);
+    printf("myarray: %p\n", myarray); // pointer address within main
 
     return 0;
 }
 
 void add(int *x) {
+
     *x += 1;
 }
 
-void array_add(int array[]) {
-    printf("array: %p\n", array);
-    array[0] += 1;
+void array_add(int array[], int size) {
+    
+    printf("array :  %p\n", array); // pointer address within the function
+
+    for (int i = 0; i < size; i++)
+        array[i] += 1;
 }
