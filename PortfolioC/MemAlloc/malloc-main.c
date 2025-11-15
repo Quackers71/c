@@ -23,7 +23,7 @@ int main() {
     }
 
     int *array;
-    array = calloc(total, sizeof(int)); // with calloc, zero's the heap space
+    array = malloc(total * sizeof(int));
 
     for(int i = 0; i < total; i++)
         printf("%d", array[i]);
