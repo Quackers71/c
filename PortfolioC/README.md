@@ -5,9 +5,15 @@
 C Programming Tutorials
 - https://youtube.com/playlist?list=PLA1FTfKBAEX4hblYoH6mnq0zsie2w6Wif&si=NZ3ned6v-JNhMydr
 
+
+
 ## Pointers
 
+Introduction to Pointers</br>
 - https://youtu.be/2GDiXG5RfNE?si=kP09dUmtuWZUtjDw
+
+Dynamic Memory Allocations | C
+- https://youtu.be/R0qIYWo8igs?si=H-E6mvirCUd_t1F6
 
 <img src="./images/Pointers0.png" width="250"></br>
 
