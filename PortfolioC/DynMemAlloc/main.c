@@ -7,33 +7,32 @@ int main() {
 
     // while (1) memory_hog(128000); // function called to test memory overload
 
-    int size = 10;
+    int size = 0;
+    printf("Enter size : ");
+    scanf("%d", &size);
 
     int *a = calloc(size, sizeof(int)); // calloc zero's the heap space first
     // int *a = malloc(sizeof(int) * size); // a dynamically allocated array of 10 integers
 
     for (int i = 0; i < size; i++)
         a[i] = size - i;
+    printf("a: %p\n", a);
 
     for (int i = 0; i < size; i++)
         printf("a[%d] = %d\n", i, a[i]);
     printf("\n");
 
-    printf("a:    %p\n", a);
+    printf("a: %p\n", a);
 
-    int *save = a;
-    printf("save: %p\n", save);
-    for (int i = 0; i < size; i++)
-        printf("save[%d] = %d\n", i, save[i]);
+    a = realloc(a, sizeof(int) * (size + size)); // re-allocating memory
+
+    for (int i = size; i < (size+size); i++) a[i] = 9;
+
+    for (int i = 0; i < (size+size); i++)
+        printf("a[%d] = %d\n", i, a[i]);
     printf("\n");
     
     free(a); // Free the allocated memory block (Heap)
-
-    printf("after free(a)\n");
-    printf("save: %p\n", save);
-    for (int i = 0; i < size; i++)
-        printf("save[%d] = %d\n", i, save[i]);
-    printf("\n");
 
     return 0;
 }

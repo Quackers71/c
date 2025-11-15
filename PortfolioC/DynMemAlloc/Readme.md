@@ -30,5 +30,9 @@ Manual memory management</br>
 Memory Leaks</br>
 <img src="./../images/memory-leak.png" width="350"></br>
 
-Manual memory management issues</br>
+Manual Memory management issues</br>
 <img src="./../images/manual-memory-management-issues.png" width="350"></br>
+
+General Memory management</br>
+<img src="./../images/general-memory-management.png" width="350"></br>
+
