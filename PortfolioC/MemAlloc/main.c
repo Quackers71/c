@@ -4,7 +4,23 @@
 
 int main() {
 
-    int total = 1000;
+    clock_t tic, toc;
+    int *array;
+
+    tic = clock();
+    array = malloc(1000000 * sizeof(int));
+    toc = clock();
+    printf("malloc: %fs\n", (double) (toc - tic) / CLOCKS_PER_SEC);
+    free(array);
+
+    tic = clock();
+    array = calloc(1000000, sizeof(int)); // calloc comes with a performance cost
+    toc = clock();
+    printf("calloc: %fs\n", (double) (toc - tic) / CLOCKS_PER_SEC);
+    free(array);
+
+
+    /* int total = 1000;
 
     int size = 0;
     int *junk = 0;
@@ -30,7 +46,7 @@ int main() {
     
     free(array);
 
-    printf("\n");
+    printf("\n"); */
     
     return 0;
 }
