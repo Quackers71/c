@@ -5,7 +5,10 @@
 C Programming Tutorials
 - https://youtube.com/playlist?list=PLA1FTfKBAEX4hblYoH6mnq0zsie2w6Wif&si=NZ3ned6v-JNhMydr
 
-
+You can Build and Run it locally via the Terminal in VSCode
+```
+% gcc -o structpad main.c -std=c99 -Wall -Werror
+```
 
 ## Pointers
 
