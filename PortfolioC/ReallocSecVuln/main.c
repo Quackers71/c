@@ -19,32 +19,45 @@ int main() {
     strcpy(password1, "abc123");
     strcpy(password2, "xyz789");
 
-    printf("p1 addr  : %p\np2 addr  : %p\n", password1, password2);
-    printf("p1 (int) : %ld\np2 (int) : %ld\n",(long) password1, (long) password2);
+    printf("p1  addr  : %p\np2  addr  : %p\n", password1, password2);
+    printf("p1 (long) : %ld\np2 (long) : %ld\n",(long) password1, (long) password2);
 
-    printf("\n");
+    printf("\nOutput of each char in the password1 array\n\n");
 
-    for (int i = 0; i < 100; i++)
+    printf("\t");
+    for (int i = 0; i <= 30; i++)
         printf("%c", password1[i]);
-    printf("\n\n");
+        // printf("%d = %c\n", i, password1[i]); /* this outputs each char in it's array position */
+    printf("\n\n---\n\n");
 
     other_ptr = password1;
-    printf("other ptr copied from p1 : %s\n\n", other_ptr);
+    printf("other_ptr copied from p1 : %s\n", other_ptr);
 
-    password1 = realloc(password1, 20 * sizeof(char));
+    password1 = realloc(password1, 30 * sizeof(char)); /* this reallocates password1 to a new address, 
+                                                          and the other_ptr was assigned to the original 
+                                                          address of password1 */ 
 
-    printf("p1 addr  : %p\np2 addr  : %p\n", password1, password2);
-    printf("p1 (int) : %ld\np2 (int) : %ld\n",(long) password1, (long) password2);
+    /* When realloc moves the memory and frees the original location, other_ptr is left pointing to memory 
+    that no longer belongs to your program (it is a dangling pointer). */                                                        
+
+    printf("\nrealloc of password1\n");
+    printf("p1  addr  : %p\np2  addr  : %p\n", password1, password2);
+    printf("p1 (long) : %ld\np2 (long) : %ld\n",(long) password1, (long) password2);
 
     printf("p1 : %s\n\n", password1);
+    other_ptr = password1; // required to fix the dangling pointer
 
-    printf("other ptr addr : %ld\n", (long) other_ptr);
+    printf("other_ptr addr   : %p\n", other_ptr);
+    printf("other_ptr (long) : %ld\n", (long) other_ptr);
+    printf("other_ptr string : %s\n", other_ptr); // now outputs correctly ;-)
 
-    printf("other ptr str  : %s\n", other_ptr); // supposed to print copy of password1 but doesn't?!!
+    printf("\nOutput of each char in the other_ptr array\n\n");
 
-    for (int i = 0; i < 100; i++)
+    printf("\t");
+    for (int i = 0; i <= 30; i++)
         printf("%c", other_ptr[i]);
-    printf("\n\n");
+        // printf("%d = %c\n", i, other_ptr[i]); /* this outputs each char in it's array position */
+    printf("\n\n---\n\n");
     
     free(password1);
     free(password2);
