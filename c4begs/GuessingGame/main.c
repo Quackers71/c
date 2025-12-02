@@ -1,9 +1,18 @@
-#include <stdlib.h>
+#include <stdlib.h> // required for rand() and srand()
 #include <stdio.h>
 #include <string.h>
+#include <time.h> // required for time()
 
 int main() {
-    int secretNumber = 5;
+
+    srand(time(NULL)); /* time(NULL) returns the current time in second since the Epoch 
+                        and makes the sequence of "random" numbers different every time
+                        the program runs */ 
+    int lower_bound = 1;
+    int upper_bound = 10;
+    /* rand() % (max - min + 1) + min generates a number */
+    int secretNumber = (rand() % (upper_bound - lower_bound + 1)) + lower_bound;
+
     int guess = 0;
     int guessCount = 0;
     int guessLimit = 3;
@@ -11,7 +20,7 @@ int main() {
     int guessesLeft = 3;
     char inputBuffer[100]; // Buffer to read string input
 
-    printf("Guess the secret number\n");
+    printf("Guess the secret number, between 1 - 10 (You have 3 attempts!)\n");
 
     while(guess != secretNumber && outOfGuesses == 0) {
         if(guessCount < guessLimit) {
@@ -50,9 +59,10 @@ int main() {
 
     // Final message logic
     if(guess == secretNumber) {
-        printf("You guessed the right number!\n");
+        printf("\n***** Well done, you guessed the right number! *****\n\n");
     } else {
-        printf("You ran out of guesses!\n");
+        printf("\n~~~~~ Unlucky, you ran out of guesses! ~~~~~\n");
+        printf("\n The Secret Number was %d\n\n", secretNumber);
     }
 
     return 0;
