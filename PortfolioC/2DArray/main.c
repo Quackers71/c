@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ROWS 3
-#define COLS 3
+// #define ROWS 3
+// #define COLS 3
 
 #define M 3
 #define N 4
@@ -14,19 +14,7 @@ void matrix_multi(int c[M][P],
 
 int main() {
 
-    /* int a[ROWS][COLS] = { {1,2,3},
-                          {4,5,6}};
-
-    for (int i = 0; i < ROWS; i++)
-        for (int j = 0; j < COLS; j++)
-    {
-        printf("Enter a[%d][%d] : ", i, j);
-        scanf("%d", &a[i][j]);
-    }
-
-    for (int i = 0; i < ROWS; i++)
-        for (int j = 0; j < COLS; j++)
-            printf("a[%d][%d]=%d\n",i,j,a[i][j]); */
+    /* [ROW][COLUMN] */
 
     int A[M][N] = { {1,2,3,4},
                     {4,5,6,7},
@@ -43,14 +31,13 @@ int main() {
 
     matrix_multi(C,A,B);
 
-    printf("\n\n\n");
+    printf("\n");
 
     for (int i = 0; i < M; i++)
         for (int j = 0; j < P; j++)
             printf("C[%d][%d]=%d\n",i,j,C[i][j]);
 
-    // printf("a[0][2]=%d\n", a[0][2]);
-    // printf("a[1][1]=%d\n", a[1][1]);
+    printf("\n");
     
     return 0;
 }
@@ -62,10 +49,29 @@ void matrix_multi(int c[M][P],
 
     for (int i = 0; i < M; i++)
         for (int j = 0; j < P; j++)
-            c[i][j] = 0;
+            c[i][j] = 0; /* resetting 2D Matrix > c[M]i &  c[P]j are set to 0 */
 
     for (int i = 0; i < M; i++)
         for (int j = 0; j < P; j++)
-            for (int k = 0; k < M; k++)
+            for (int k = 0; k < N; k++)
                 c[i][j] += a[i][k] * b[k][j];
 }
+
+// Previous code
+
+    /* int a[ROWS][COLS] = { {1,2,3},
+                          {4,5,6}};
+
+    for (int i = 0; i < ROWS; i++)
+        for (int j = 0; j < COLS; j++)
+    {
+        printf("Enter a[%d][%d] : ", i, j);
+        scanf("%d", &a[i][j]);
+    }
+
+    for (int i = 0; i < ROWS; i++)
+        for (int j = 0; j < COLS; j++)
+            printf("a[%d][%d]=%d\n",i,j,a[i][j]); */
+
+    // printf("a[0][2]=%d\n", a[0][2]);
+    // printf("a[1][1]=%d\n", a[1][1]);
