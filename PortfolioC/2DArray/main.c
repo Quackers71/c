@@ -49,7 +49,7 @@ void matrix_multi(int c[M][P],
 
     for (int i = 0; i < M; i++)
         for (int j = 0; j < P; j++)
-            c[i][j] = 0; /* resetting 2D Matrix > c[M]i &  c[P]j are set to 0 */
+            c[i][j] = 0; /* resetting 2D Matrix, making sure that c[M]i & c[P]j are set to 0 */
 
     for (int i = 0; i < M; i++)
         for (int j = 0; j < P; j++)
