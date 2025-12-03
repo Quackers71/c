@@ -36,3 +36,6 @@ Manual Memory management issues</br>
 General Memory management</br>
 <img src="./../images/general-memory-management.png" width="350"></br>
 
+A Garbage Collector (other languages)</br>
+<img src="./../images/garbage-collectors.png" width="350"></br>
+
