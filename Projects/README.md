@@ -12,7 +12,8 @@ These projects are great for getting comfortable with the basics of C and do not
 - Mini Calculator: A command-line program that takes two numbers and an operator (+, -, *, /) as input and performs the corresponding calculation. This helps solidify understanding of input/output (scanf, printf), conditional statements (if-else or switch), and basic arithmetic.
 
 - Number Guessing Game: The program generates a random number and prompts the user to guess it. It provides hints (too high/too low) until the user guesses correctly. This project uses random number generation, loops (while or do-while), and conditional logic.
-Simple Quiz System: Create a text-based multiple-choice quiz. The questions and correct answers can be hardcoded or read from a simple text file. The program tracks the user's score and displays the final result at the end.
+
+- Simple Quiz System: Create a text-based multiple-choice quiz. The questions and correct answers can be hardcoded or read from a simple text file. The program tracks the user's score and displays the final result at the end.
 
 - Command-line Diary/Journal: A program that allows a user to write and save daily journal entries to a text file. You can add features to view entries by date. This introduces file I/O operations (fopen, fprintf, fclose, etc.). 
 ```
