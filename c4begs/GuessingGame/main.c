@@ -3,22 +3,30 @@
 #include <string.h>
 #include <time.h> // required for time()
 
+
+/* define some stuff */
+#define LOWER_BOUND 1
+#define UPPER_BOUND 10
+#define MAX_ATTEMPTS 3
+#define GUESS_LIMIT 3
+#define INPUT_BUFFER_SIZE 100
+
+
 int main() {
 
     srand(time(NULL)); /* time(NULL) returns the current time in second since the Epoch 
                         and makes the sequence of "random" numbers different every time
                         the program runs */ 
-    int lower_bound = 1;
-    int upper_bound = 10;
+    
     /* rand() % (max - min + 1) + min generates a number */
-    int secretNumber = (rand() % (upper_bound - lower_bound + 1)) + lower_bound;
+    int secretNumber = (rand() % (UPPER_BOUND - LOWER_BOUND + 1)) + LOWER_BOUND;
 
     int guess = 0;
     int guessCount = 0;
-    int guessLimit = 3;
+    int guessLimit = GUESS_LIMIT;
     int outOfGuesses = 0;
-    int guessesLeft = 3;
-    char inputBuffer[100]; // Buffer to read string input
+    int guessesLeft = MAX_ATTEMPTS;
+    char inputBuffer[INPUT_BUFFER_SIZE]; // Buffer to read string input
 
     printf("Guess the secret number, between 1 - 10 (You have 3 attempts!)\n");
 
@@ -31,6 +39,10 @@ int main() {
                 // Attempt to convert the string to an integer
                 // sscanf returns 1 if it successfully reads an integer
                 if (sscanf(inputBuffer, "%d", &guess) == 1) {
+
+                    if (guess < LOWER_BOUND || guess > UPPER_BOUND) {
+                        printf("Input is out of range! This counts as a guess.\n");
+                    }
                     // Valid integer was scanned.
                     // The guess will be checked by the main while loop condition later.
                 } else {
