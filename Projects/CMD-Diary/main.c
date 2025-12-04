@@ -18,9 +18,11 @@ int main() {
             printf("Error reading the input.\n");
         }
 
+        // sscanf used to extract the option, Expect a single character
         if (sscanf(op_buffer, "%c", &option) == 1) {
+            // to check if the character is one of the valid options
             if (option == 'l' || option == 'a' || option == 'd' || option == 'q') {
-                valid_option = 1;
+                valid_option = 1; // Input is valid, so exit the loop
             } else {
                 printf("Error: Invalid option, please try again!\n");
             }
@@ -42,7 +44,7 @@ int main() {
             break;
         case 'q':
             printf("you chose to quit the application\n");
-            return 1;
+            return 1; // Exit the program, immediately
             break;
         default:
             printf("Error: Invalid operator\n");
