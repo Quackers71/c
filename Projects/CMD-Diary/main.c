@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
+#include <time.h>
 
 #define BUFFER_SIZE 256
+#define TIMESTAMP_LENGTH 100
+#define FILENAME "journal.log"
+
+void get_timestamp(char* buffer, size_t buffer_size);
+int append_diary(const char* user_input, const char* filename);
 
 int main() {
 
@@ -38,6 +43,31 @@ int main() {
             break;
         case 'a':
             printf("you chose to add an entry\n");
+
+            char user_input[BUFFER_SIZE];
+
+            // get User input
+            printf("Add your entry : ");
+            // fget reads your input, including spaces
+            if (fgets(user_input, BUFFER_SIZE, stdin) == NULL) {
+                fprintf(stderr, "Error reading input.\n");
+                return EXIT_FAILURE;
+            }
+
+            // remove trailing newline char if present
+            size_t input_len = strlen(user_input);
+            if (input_len > 0 && user_input[input_len - 1] == '\n') {
+                user_input[input_len - 1] = '\0';
+            }
+
+            // call function to handle file operation
+            if (append_diary(user_input, FILENAME) == EXIT_SUCCESS) {
+                printf("Entry successfully added to %s.\n", FILENAME);
+            } else {
+                // error message already printed by append_diary
+                return EXIT_FAILURE;
+            }
+
             break;
         case 'd':
             printf("you chose to delete an entry\n");
@@ -53,4 +83,40 @@ int main() {
     
     printf("The End\n");
     return 0;
+}
+
+void get_timestamp(char* buffer, size_t buffer_size) {
+    time_t rawtime;
+    struct tm *timeinfo;
+
+    time(&rawtime); // get the current time
+    timeinfo = localtime(&rawtime); // convert to local time structure
+
+    // format the time as "YYYY-MM-DD HH:MM:SS"
+    strftime(buffer, buffer_size, "%Y-%m-%d %H:%M;%S", timeinfo);
+}
+
+int append_diary(const char* user_input, const char* filename) {
+    printf("appending\n");
+    FILE *fp;
+    char timestamp[TIMESTAMP_LENGTH]; 
+    // char user_input[BUFFER_SIZE];
+
+    get_timestamp(timestamp, TIMESTAMP_LENGTH);
+
+    // open file in append mode 'a'
+    fp = fopen(filename, "a");
+    if (fp == NULL) {
+        fprintf(stderr, "Error opening the file %s in append mode.\n", filename);
+        return EXIT_FAILURE; // return failure status
+    }
+
+    // write the timestamp & user input into the file
+    fprintf(fp, "[%s] %s\n", timestamp, user_input);
+
+    fclose(fp);
+
+    printf("Entry successfully added to %s\n", FILENAME);
+
+    return EXIT_SUCCESS;
 }
