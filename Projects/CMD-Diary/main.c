@@ -93,7 +93,7 @@ void get_timestamp(char* buffer, size_t buffer_size) {
     timeinfo = localtime(&rawtime); // convert to local time structure
 
     // format the time as "YYYY-MM-DD HH:MM:SS"
-    strftime(buffer, buffer_size, "%Y-%m-%d %H:%M;%S", timeinfo);
+    strftime(buffer, buffer_size, "%Y-%m-%d %H:%M:%S", timeinfo);
 }
 
 int append_diary(const char* user_input, const char* filename) {
