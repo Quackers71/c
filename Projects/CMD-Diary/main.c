@@ -12,6 +12,7 @@ int append_diary(const char* user_input, const char* filename);
 int get_next_id(const char* filename);
 int handle_add_entry(const char* filename); // new function prototype
 int output_list(const char* filename);
+int delete_entry(const char* filename);
 
 int main() {
 
@@ -55,6 +56,12 @@ int main() {
                 break;
             case 'd':
                 printf("you chose to delete an entry\n");
+                if (output_list(FILENAME) != EXIT_SUCCESS) {
+                    fprintf(stderr, "Failed to output the list\n");
+                }
+                if (delete_entry(FILENAME) != EXIT_SUCCESS) {
+                    fprintf(stderr, "Failed to delete the entry\n");
+                }
                 break;
             case 'q':
                 printf("you chose to quit the application\n");
@@ -147,8 +154,6 @@ int handle_add_entry(const char* filename) {
 }
 
 int output_list(const char* filename) {
-    printf("you chose to list entries\n");
-
     FILE *fp;
     // ensure buffer is large enough for ID + Timestamp + Entry
     char line_buffer[BUFFER_SIZE + TIMESTAMP_LENGTH + 20];
@@ -166,5 +171,52 @@ int output_list(const char* filename) {
     printf("--- End of Entries ---\n");
 
     fclose(fp);
+    return EXIT_SUCCESS;
+}
+
+int delete_entry(const char* filename) {
+    char option;
+    char op_buffer[BUFFER_SIZE];
+    int valid_option;
+
+    do {
+        valid_option = 0; // reset flag for each new prompt cycle
+        while (!valid_option) {
+            printf("Please choose an ID to delete or (q) : ");
+            if (fgets(op_buffer, sizeof(op_buffer), stdin) == NULL) {
+                printf("Error reading the input.\n");
+                // depending on error handling, exit or continue
+                continue;
+            }
+
+            // sscanf used to extract the option, Expect a single character
+            if (sscanf(op_buffer, "%c", &option) == 1) {
+                // to check if the character is one of the valid options
+                if (option == 'l' || option == 'a' || option == 'd' || option == 'q') {
+                    valid_option = 1; // Input is valid, so exit the loop
+                } else {
+                    printf("Error: Invalid option, please try again!\n");
+                }
+            } else {
+                printf("Error: Invalid input format, please enter a single character.\n");
+            }
+        }
+        switch (option) {
+            /* case 'l':
+                if (output_list(FILENAME) != EXIT_SUCCESS) {
+                    fprintf(stderr, "Failed to output the list\n");
+                }
+                break; */
+            case 'q':
+                printf("you chose to quit the application\n");
+                return 1; // Exit the program, immediately
+                break;
+            default:
+                printf("Error: Invalid operator\n");
+                break;
+        }
+    } while (1);
+
+    printf("you chose to quit the delete entry section\n\n");
     return EXIT_SUCCESS;
 }
