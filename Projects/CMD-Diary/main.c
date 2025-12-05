@@ -9,6 +9,7 @@
 
 void get_timestamp(char* buffer, size_t buffer_size);
 int append_diary(const char* user_input, const char* filename);
+int get_next_id(const char* filename);
 
 int main() {
 
@@ -100,9 +101,10 @@ int append_diary(const char* user_input, const char* filename) {
     printf("appending\n");
     FILE *fp;
     char timestamp[TIMESTAMP_LENGTH]; 
-    // char user_input[BUFFER_SIZE];
+    int entry_id;
 
     get_timestamp(timestamp, TIMESTAMP_LENGTH);
+    entry_id = get_next_id(filename); // get the ID b4 opening in append mode
 
     // open file in append mode 'a'
     fp = fopen(filename, "a");
@@ -112,11 +114,32 @@ int append_diary(const char* user_input, const char* filename) {
     }
 
     // write the timestamp & user input into the file
-    fprintf(fp, "[%s] %s\n", timestamp, user_input);
+    fprintf(fp, "[%d] [%s] %s\n", entry_id, timestamp, user_input);
 
     fclose(fp);
 
     printf("Entry successfully added to %s\n", FILENAME);
 
     return EXIT_SUCCESS;
+}
+
+int get_next_id(const char* filename) {
+    FILE *fp;
+    int count = 0;
+    int c;
+
+    fp = fopen(filename, "r");
+    if (fp == NULL) {
+        // if the file doesn't exist, the first ID will be 1
+        return 1;
+    }
+    // count lines by couting newline chars
+    while ((c = fgetc(fp)) != EOF) {
+        if (c == '\n') {
+            count++;
+        }
+    }
+    fclose(fp);
+    // count of newlines
+    return count + 1;
 }
