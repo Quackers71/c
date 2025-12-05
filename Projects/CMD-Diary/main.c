@@ -11,6 +11,7 @@ void get_timestamp(char* buffer, size_t buffer_size);
 int append_diary(const char* user_input, const char* filename);
 int get_next_id(const char* filename);
 int handle_add_entry(const char* filename); // new function prototype
+int output_list(const char* filename);
 
 int main() {
 
@@ -43,7 +44,9 @@ int main() {
         }
         switch (option) {
             case 'l':
-                printf("you chose to list entries\n");
+                if (output_list(FILENAME) != EXIT_SUCCESS) {
+                    fprintf(stderr, "Failed to output the list\n");
+                }
                 break;
             case 'a':
                 if (handle_add_entry(FILENAME) != EXIT_SUCCESS) {
@@ -62,6 +65,8 @@ int main() {
                 break;
         }
     } while (1);
+
+    return 0; // to exit the program
 }
 
 void get_timestamp(char* buffer, size_t buffer_size) {
@@ -70,7 +75,6 @@ void get_timestamp(char* buffer, size_t buffer_size) {
 
     time(&rawtime); // get the current time
     timeinfo = localtime(&rawtime); // convert to local time structure
-
     // format the time as "YYYY-MM-DD HH:MM:SS"
     strftime(buffer, buffer_size, "%Y-%m-%d %H:%M:%S", timeinfo);
 }
@@ -82,21 +86,18 @@ int append_diary(const char* user_input, const char* filename) {
 
     get_timestamp(timestamp, TIMESTAMP_LENGTH);
     entry_id = get_next_id(filename); // get the ID b4 opening in append mode
-
     // open file in append mode 'a'
     fp = fopen(filename, "a");
     if (fp == NULL) {
         fprintf(stderr, "Error opening the file %s in append mode.\n", filename);
         return EXIT_FAILURE; // return failure status
     }
-
     // write the timestamp & user input into the file
     fprintf(fp, "[%d] [%s] %s\n", entry_id, timestamp, user_input);
 
     fclose(fp);
 
     printf("Entry successfully added to %s\n", FILENAME);
-
     return EXIT_SUCCESS;
 }
 
@@ -122,8 +123,6 @@ int get_next_id(const char* filename) {
 }
 
 int handle_add_entry(const char* filename) {
-    printf("you chose to add an entry\n");
-
     char user_input[BUFFER_SIZE];
 
     // get User input
@@ -133,13 +132,11 @@ int handle_add_entry(const char* filename) {
         fprintf(stderr, "Error reading input.\n");
         return EXIT_FAILURE;
     }
-
     // remove trailing newline char if present
     size_t input_len = strlen(user_input);
     if (input_len > 0 && user_input[input_len - 1] == '\n') {
         user_input[input_len - 1] = '\0';
     }
-
     // call function to handle file operation
     if (append_diary(user_input, filename) == EXIT_SUCCESS) {
         return EXIT_SUCCESS;
@@ -147,4 +144,27 @@ int handle_add_entry(const char* filename) {
         // error message already printed by append_diary
         return EXIT_FAILURE;
     }
+}
+
+int output_list(const char* filename) {
+    printf("you chose to list entries\n");
+
+    FILE *fp;
+    // ensure buffer is large enough for ID + Timestamp + Entry
+    char line_buffer[BUFFER_SIZE + TIMESTAMP_LENGTH + 20];
+    fp = fopen(filename, "r");
+    if (fp == NULL) {
+        // if the file doesn't exist, there will be no entries to output
+        printf("The Journal file '%s' doesn't exist, or is empty.\n", filename);
+        return EXIT_FAILURE;
+    }
+
+    printf("\n--- Journal Entries ---\n");
+    while (fgets(line_buffer, sizeof(line_buffer), fp) != NULL) {
+        printf("%s", line_buffer);
+    }
+    printf("--- End of Entries ---\n");
+
+    fclose(fp);
+    return EXIT_SUCCESS;
 }
