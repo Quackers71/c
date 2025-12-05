@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 
 #define BUFFER_SIZE 256
 #define TIMESTAMP_LENGTH 100
 #define FILENAME "journal.log"
+#define TEMP_FILENAME "temp_journal.log" // temporary filename
 
 void get_timestamp(char* buffer, size_t buffer_size);
 int append_diary(const char* user_input, const char* filename);
@@ -13,6 +15,7 @@ int get_next_id(const char* filename);
 int handle_add_entry(const char* filename); // new function prototype
 int output_list(const char* filename);
 int delete_entry(const char* filename);
+int get_id_from_line(const char* line); // new function to parse ID from log line
 
 int main() {
 
@@ -55,9 +58,9 @@ int main() {
                 }
                 break;
             case 'd':
-                printf("you chose to delete an entry\n");
                 if (output_list(FILENAME) != EXIT_SUCCESS) {
                     fprintf(stderr, "Failed to output the list\n");
+                    break;
                 }
                 if (delete_entry(FILENAME) != EXIT_SUCCESS) {
                     fprintf(stderr, "Failed to delete the entry\n");
@@ -65,7 +68,7 @@ int main() {
                 break;
             case 'q':
                 printf("you chose to quit the application\n");
-                return 1; // Exit the program, immediately
+                return 0; // Exit the program, immediately
                 break;
             default:
                 printf("Error: Invalid operator\n");
@@ -175,6 +178,12 @@ int output_list(const char* filename) {
 }
 
 int delete_entry(const char* filename) {
+    /* FILE *fp_in, *fp_out;
+    int id_to_delete;
+    char user_input_buffer[BUFFER_SIZE]; */
+
+    /* This whole section requires changing */
+
     char option;
     char op_buffer[BUFFER_SIZE];
     int valid_option;
@@ -208,7 +217,7 @@ int delete_entry(const char* filename) {
                 }
                 break; */
             case 'q':
-                printf("you chose to quit the application\n");
+                printf("you chose to quit out of the delete section\n");
                 return 1; // Exit the program, immediately
                 break;
             default:
@@ -219,4 +228,15 @@ int delete_entry(const char* filename) {
 
     printf("you chose to quit the delete entry section\n\n");
     return EXIT_SUCCESS;
+}
+
+int get_id_from_line(const char* line) {
+    int id = 0;
+    // check the line starts with '['
+    if (line[0] == '[' && isdigit((unsigned char)line[1])) {
+        // sscanf to extract integer between the []
+        sscanf(line, "[%d]", &id);
+    }
+
+    return id;
 }
