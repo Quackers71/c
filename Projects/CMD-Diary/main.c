@@ -178,55 +178,78 @@ int output_list(const char* filename) {
 }
 
 int delete_entry(const char* filename) {
-    /* FILE *fp_in, *fp_out;
+    FILE *fp_in, *fp_out;
     int id_to_delete;
-    char user_input_buffer[BUFFER_SIZE]; */
+    char user_input_buffer[BUFFER_SIZE];
+    char line_buffer[BUFFER_SIZE + TIMESTAMP_LENGTH + 20];
+    int entry_deleted = 0;
+    int input_success = 0;
 
-    /* This whole section requires changing */
-
-    char option;
-    char op_buffer[BUFFER_SIZE];
-    int valid_option;
-
-    do {
-        valid_option = 0; // reset flag for each new prompt cycle
-        while (!valid_option) {
-            printf("Please choose an ID to delete or (q) : ");
-            if (fgets(op_buffer, sizeof(op_buffer), stdin) == NULL) {
-                printf("Error reading the input.\n");
-                // depending on error handling, exit or continue
-                continue;
-            }
-
-            // sscanf used to extract the option, Expect a single character
-            if (sscanf(op_buffer, "%c", &option) == 1) {
-                // to check if the character is one of the valid options
-                if (option == 'l' || option == 'a' || option == 'd' || option == 'q') {
-                    valid_option = 1; // Input is valid, so exit the loop
-                } else {
-                    printf("Error: Invalid option, please try again!\n");
-                }
-            } else {
-                printf("Error: Invalid input format, please enter a single character.\n");
-            }
+    while (!input_success) {
+        printf("Please Enter an ID to delete, or (q) to cancel : ");
+        if (fgets(user_input_buffer, BUFFER_SIZE, stdin) == NULL) {
+            printf("Error reading the input.\n");
+            return EXIT_FAILURE;
         }
-        switch (option) {
-            /* case 'l':
-                if (output_list(FILENAME) != EXIT_SUCCESS) {
-                    fprintf(stderr, "Failed to output the list\n");
-                }
-                break; */
-            case 'q':
-                printf("you chose to quit out of the delete section\n");
-                return 1; // Exit the program, immediately
-                break;
-            default:
-                printf("Error: Invalid operator\n");
-                break;
-        }
-    } while (1);
 
-    printf("you chose to quit the delete entry section\n\n");
+        user_input_buffer[strcspn(user_input_buffer, "\n")] = '\0';
+        if (strcmp(user_input_buffer, "q") == 0) {
+            printf("Deletion Cancelled.\n'n");
+            return EXIT_SUCCESS; // User cancelled out of deletion function
+        }
+        // sscanf used to extract the option, Expect a single character
+        if (sscanf(user_input_buffer, "%d", &id_to_delete) == 1 && id_to_delete > 0) {
+            input_success = 1; // valid ID
+
+        } else {
+            printf("Error: Invalid input, please enter a positive ID or 'q'.\n");
+        }
+    }
+    // 2. open files for processing
+    fp_in = fopen(filename, "r");
+    if (fp_in == NULL) {
+        printf("Error: Cannot open Journal file '%s'.\n", TEMP_FILENAME);
+        return EXIT_FAILURE;
+    }
+    fp_out = fopen(TEMP_FILENAME, "w");
+    if (fp_out == NULL) {
+        fprintf(stderr, "Error opening temp file '%s'.\n", TEMP_FILENAME);
+        fclose(fp_in);
+        return EXIT_FAILURE;
+    }
+    // 3. read input file by line & write non-matching ID's to temp file
+    while (fgets(line_buffer, sizeof(line_buffer), fp_in) != NULL) {
+        int current_id = get_id_from_line(line_buffer);
+        if (current_id == id_to_delete) {
+            entry_deleted = 1;
+            printf("-> Deleting entry [ID %d]\n", id_to_delete);
+            // skip writing this line to the temp file
+        } else {
+            fprintf(fp_out, "%s", line_buffer);
+            // write all other lines to the temp file
+        }
+    }
+    // 4. close files
+    fclose(fp_in);
+    fclose(fp_out);
+
+    // 5. replace original file with temp file
+    if (entry_deleted) {
+        if (remove(filename) != 0) {
+            fprintf(stderr, "Error removing the original file.\n");
+            return EXIT_FAILURE;
+        }
+        if (rename(TEMP_FILENAME, filename) != 0) {
+            fprintf(stderr, "Error renaming temp file to original filename.\n");
+            return EXIT_FAILURE;
+        }
+        printf("Entry [ID %d] was successfully deleted.\n\n", id_to_delete);
+    } else {
+        // ID wasn't found, delete the temp file
+        printf("Error: Entry [ID %d] not found in the Journal.\n\n", id_to_delete);
+        return EXIT_FAILURE;
+    }
+
     return EXIT_SUCCESS;
 }
 
