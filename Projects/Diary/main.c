@@ -237,6 +237,7 @@ int delete_entry(const char* filename) {
     if (entry_deleted) {
         if (remove(filename) != 0) {
             fprintf(stderr, "Error removing the original file.\n");
+            remove(TEMP_FILENAME); // clean up the temp file
             return EXIT_FAILURE;
         }
         if (rename(TEMP_FILENAME, filename) != 0) {
@@ -247,6 +248,7 @@ int delete_entry(const char* filename) {
     } else {
         // ID wasn't found, delete the temp file
         printf("Error: Entry [ID %d] not found in the Journal.\n\n", id_to_delete);
+        remove(TEMP_FILENAME); // again, clean up the temp file
         return EXIT_FAILURE;
     }
 
