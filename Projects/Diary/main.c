@@ -107,7 +107,7 @@ int append_diary(const char* user_input, const char* filename) {
 
     fclose(fp);
 
-    printf("Entry successfully added to %s\n", FILENAME);
+    printf("You successfully added '%s' to the %s\n", user_input, FILENAME);
     return EXIT_SUCCESS;
 }
 
